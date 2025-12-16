@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevating The 'Tute: A UX Case Study</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Freight Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: #ffffff;
+            padding: 100px 20px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(90deg, #D4AF37 0%, transparent 50%),
+                linear-gradient(180deg, #C1272D 0%, transparent 50%),
+                linear-gradient(270deg, #009639 0%, transparent 50%);
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-title {
+            font-family: 'Freight Big Pro', Georgia, serif;
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            color: #D4AF37;
+        }
+
+        .project-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #ffffff;
+            opacity: 0.9;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .meta-item {
+            text-align: left;
+        }
+
+        .meta-label {
+            font-size: 0.9rem;
+            color: #D4AF37;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .meta-value {
+            font-size: 1.1rem;
+            color: #ffffff;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 20px;
+        }
+
+        .section-alt {
+            background-color: #f8f8f8;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-number {
+            font-size: 0.9rem;
+            color: #D4AF37;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-family: 'Freight Big Pro', Georgia, serif;
+            font-size: 2.5rem;
+            color: #000000;
+            margin-bottom: 20px;
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Problem Statement Section */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .problem-card {
+            background: #ffffff;
+            padding: 40px;
+            border-left: 4px solid #D4AF37;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .problem-card h3 {
+            font-family: 'Freight Big Pro', Georgia, serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #000000;
+        }
+
+        .problem-card p {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, #000000 0%, #2a2a2a 100%);
+            color: #ffffff;
+            padding: 50px;
+            margin: 60px 0;
+            border-left: 6px solid #D4AF37;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 100px;
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            color: #D4AF37;
+            opacity: 0.3;
+            font-family: Georgia, serif;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            line-height: 1.6;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Impact Section */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .impact-metric {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #000000 0%, #2a2a2a 100%);
+            color: #ffffff;
+            border-radius: 8px;
+        }
+
+        .metric-number {
+            font-family: 'Freight Big Pro', Georgia, serif;
+            font-size: 3rem;
+            color: #D4AF37;
+            margin-bottom: 10px;
+        }
+
+        .metric-label {
+            font-size: 1.1rem;
+            color: #ffffff;
+        }
+
+        /* Solutions Grid */
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .solution-card {
+            background: #ffffff;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .solution-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #C1272D 0%, #009639 50%, #D4AF37 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #ffffff;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .solution-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+        }
+
+        .solution-image-gallery {
+            width: 100%;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .solution-image-gallery img {
+            flex: 1;
+            width: 100%;
+            height: 50%;
+            object-fit: contain;
+            object-position: center;
+        }
+
+        .solution-content {
+            padding: 30px;
+        }
+
+        .solution-title {
+            font-family: 'Freight Big Pro', Georgia, serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #000000;
+        }
+
+        .solution-description {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .solution-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .solution-features li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #555;
+        }
+
+        .solution-features li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #D4AF37;
+            font-weight: bold;
+        }
+
+        /* Process Timeline */
+        .process-timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            order: 2;
+        }
+
+        .timeline-item:nth-child(even) .timeline-visual {
+            order: 1;
+        }
+
+        .timeline-content {
+            padding: 30px;
+        }
+
+        .timeline-phase {
+            font-size: 0.9rem;
+            color: #D4AF37;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .timeline-title {
+            font-family: 'Freight Big Pro', Georgia, serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #000000;
+        }
+
+        .timeline-description {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .timeline-visual {
+            background: #f5f5f5;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-left: 4px solid #D4AF37;
+        }
+
+        .visual-placeholder {
+            background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-style: italic;
+            border: 2px dashed #ccc;
+        }
+
+        /* Research Insights */
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .insight-card {
+            background: #ffffff;
+            padding: 35px;
+            border-top: 4px solid #C1272D;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+        }
+
+        .insight-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .insight-title {
+            font-family: 'Freight Big Pro', Georgia, serif;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #000000;
+        }
+
+        .insight-description {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Design Iterations */
+        .iteration-container {
+            margin: 60px 0;
+        }
+
+        .iteration-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .iteration-number {
+            background: #D4AF37;
+            color: #000000;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Freight Big Pro', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .iteration-title {
+            font-family: 'Freight Big Pro', Georgia, serif;
+            font-size: 1.8rem;
+            color: #000000;
+        }
+
+        .iteration-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background: #f8f8f8;
+            padding: 40px;
+        }
+
+        .iteration-before, .iteration-after {
+            background: #ffffff;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .iteration-label {
+            font-weight: bold;
+            color: #D4AF37;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .iteration-image {
+            width: 100%;
+            height: 250px;
+            background: #e0e0e0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-style: italic;
+        }
+
+        .iteration-notes {
+            color: #555;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .feedback-box {
+            background: linear-gradient(to right, #C1272D, #009639);
+            color: #ffffff;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .feedback-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .feedback-text {
+            line-height: 1.8;
+        }
+
+        /* Cultural Context */
+        .cultural-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 40px;
+        }
+
+        .cultural-item {
+            background: #ffffff;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .cultural-title {
+            font-family: 'Freight Big Pro', Georgia, serif;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: #000000;
+            border-bottom: 3px solid #D4AF37;
+            padding-bottom: 10px;
+        }
+
+        .cultural-description {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .cultural-image-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #C1272D 0%, #009639 100%);
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-style: italic;
+        }
+
+        /* Brand Identity */
+        .brand-showcase {
+            background: #000000;
+            color: #ffffff;
+            padding: 80px 20px;
+            margin: 80px 0;
+        }
+
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .brand-element {
+            text-align: center;
+        }
+
+        .brand-sample {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .color-black { background: #000000; color: #ffffff; }
+        .color-gold { background: #D4AF37; color: #000000; }
+        .color-red { background: #C1272D; color: #ffffff; }
+        .color-green { background: #009639; color: #ffffff; }
+
+        .brand-label {
+            color: #D4AF37;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .brand-value {
+            color: #ffffff;
+            font-size: 0.9rem;
+        }
+
+        /* Reflection Section */
+        .reflection-box {
+            background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+            padding: 60px;
+            margin: 60px 0;
+            border: 1px solid #e0e0e0;
+        }
+
+        .reflection-title {
+            font-family: 'Freight Big Pro', Georgia, serif;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #000000;
+        }
+
+        .reflection-content {
+            color: #555;
+            line-height: 2;
+            font-size: 1.1rem;
+        }
+
+        .reflection-content p {
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #000000;
+            color: #ffffff;
+            padding: 60px 20px 40px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-family: 'Freight Big Pro', Georgia, serif;
+            font-size: 1.8rem;
+            color: #D4AF37;
+            margin-bottom: 20px;
+        }
+
+        .footer-text {
+            color: #ffffff;
+            opacity: 0.8;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .footer-link {
+            color: #D4AF37;
+            text-decoration: none;
+            font-weight: bold;
+            transition: opacity 0.3s;
+        }
+
+        .footer-link:hover {
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .project-title {
+                font-size: 2.5rem;
+            }
+
+            .project-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item:nth-child(even) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-visual {
+                order: initial;
+            }
+
+            .iteration-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cultural-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .solutions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-40 {
+            margin-top: 40px;
+        }
+
+        .mb-40 {
+            margin-bottom: 40px;
+        }
+
+        .highlight {
+            color: #D4AF37;
+            font-weight: bold;
+        }
+
+        .emphasis {
+            font-style: italic;
+            color: #C1272D;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="project-title">Elevating The 'Tute</h1>
+            <p class="project-subtitle">Increasing the visibility at the John D. O'Bryant African American Institute</p>
+            
+            <div class="project-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Role</div>
+                    <div class="meta-value">UX Designer & Researcher</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Duration</div>
+                    <div class="meta-value">Fall 2025</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Context</div>
+                    <div class="meta-value">Design Degree Project</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Institution</div>
+                    <div class="meta-value">Northeastern University</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Statement -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">01 — Problem Space</div>
+                <h2 class="section-title">The Visibility Challenge</h2>
+                <p class="section-description">
+                    Students at Northeastern know it only as a building but it's so much more than that. The John D. O'Bryant African American Institute offers vital support services, cultural programming, and community spaces. Yet its identity remains invisible to the very students who need it most.
+                </p>
+            </div>
+
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <h3>The Core Problem</h3>
+                    <p>Students transitioning to a predominantly white institution lack awareness of dedicated cultural and academic support spaces. Without knowing the Institute exists, they cannot access its resources or community.</p>
+                </div>
+
+                <div class="problem-card">
+                    <h3>Why Word of Mouth Fails</h3>
+                    <p>Traditional organic marketing doesn't work when students don't know what exists. The most isolated students are precisely those missed by social networks.</p>
+                </div>
+
+                <div class="problem-card">
+                    <h3>Target Audience</h3>
+                    <p>First-year students, transfer students, and students from underrepresented backgrounds navigating the transition to Northeastern, seeking community and belonging.</p>
+                </div>
+            </div>
+
+            <div class="quote-box">
+                <p class="quote-text">How can we help students discover and engage with the Institute as a community space for celebration, cultural gathering, and academic support—not just another building on campus?</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact & Final Solutions -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">02 — Impact & Solutions</div>
+                <h2 class="section-title">A Comprehensive Welcome Packet System</h2>
+                <p class="section-description">
+                    One solution is to provide an accessible entry point for students unaware of the Institute. A welcome packet containing three physical touchpoints which are the brochure, engagment stamp book and stickers guide students from discovery to engagement.
+                </p>
+            </div>
+
+
+            <div class="solutions-grid">
+                <div class="solution-card">
+                    <div class="solution-image-gallery">
+                        <img src="images/Tute-Brochure.jpg" alt="Brochure Front" />
+                        <img src="images/Tute-Brochure2.jpg" alt="Brochure Back" />
+                    </div>
+                    <div class="solution-content">
+                        <h3 class="solution-title">Brochure</h3>
+                        <p class="solution-description">
+                            The first touchpoint: a brochure that introduces students to the Institute's history, mission, and available resources. Designed for discovery and initial awareness.
+                        </p>
+                        <ul class="solution-features">
+                            <li>Concise overview of services and programs</li>
+                            <li>Clear service categories and contact information</li>
+                            <li>Historical context rooted in 1968 founding</li>
+                            <li>Visual identity establishing brand recognition</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="solution-card">
+                    <div class="solution-image-gallery">
+                        <img src="images/Stamp-Book-Cover.png" alt="Engagement Stamp Book" />
+                        <img src="images/stamp_examples_real.png" alt="Engagement Stamp Book" />
+                    </div>
+                    <div class="solution-content">
+                        <h3 class="solution-title">Engagement Stamp Book</h3>
+                        <p class="solution-description">
+                            Inspired by Japanese goshuin temple books, this artifact transforms Institute visits into a collectible journey, encouraging ongoing participation and community building.
+                        </p>
+                        <ul class="solution-features">        
+                            <li>Space for event stamps and personal reflection</li>
+                            <li>Gamification of community participation</li>
+                            <li>Physical memory-keeper for student experiences</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="solution-card">
+                    <div class="solution-image-gallery">
+                        <img src="images/Institute-sticker1.jpg" alt="Sticker 1" />
+                        <img src="images/Institute-sticker2.jpg" alt="Sticker 2" />
+                        <img src="images/Institute-sticker3.jpg" alt="Sticker 3" />
+                    </div>
+                    <div class="solution-content">
+                        <h3 class="solution-title">Stickers</h3>
+                        <p class="solution-description">
+                            Identity markers that create visibility across campus and foster pride in Institute affiliation.
+                        </p>
+                        <ul class="solution-features">
+                            <li>Pan-African color palette for cultural celebration</li>
+                            <li>Walking advertisements across campus</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-40">
+                <h3 class="solution-title text-center">Additional Deliverables</h3>
+                <p class="section-description text-center" style="margin-bottom: 40px;">
+                    Beyond the welcome packet, the project includes physical signage and an interactive digital display.
+                </p>
+
+                <div class="solutions-grid">
+                    <div class="solution-card">
+                        <div class="solution-image">
+                            <img src="images/Tute-Signage.png" alt="Stained Glass Entrance Signage" />
+                        </div>
+                        <div class="solution-content">
+                            <h3 class="solution-title">Stained Glass Entrance Signage</h3>
+                            <p class="solution-description">
+                                A conspicuous physical marker at the Institute's entrance that transforms the space from just another building to identifiable cultural destination.
+                            </p>
+                            <ul class="solution-features">
+                                <li>Stained glass design incorporating vibrant colors and celebrating African culture</li>
+                                <li>Establishes visual presence</li>
+                                <li>Creates sense of arrival and welcome</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="solution-card">
+                        <div class="solution-image-gallery">
+                            <img src="images/Tute-Display-Example.png" alt="Interactive Display Image" />
+                            <div style="flex: 1; width: 100%; background: #000; padding: 20px; display: flex; align-items: center; justify-content: center;">
+                                <video controls style="width: 100%; height: 100%; object-fit: contain;">
+                                    <source src="images/Institute-Interactive-Display.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                        <div class="solution-content">
+                            <h3 class="solution-title">Interactive Display</h3>
+                            <p class="solution-description">
+                                A digital touchpoint to highlight the Institute's history, provide an accessible method to quickly give students relevant information, and encourage exploration of resources.
+                            </p>
+                            <ul class="solution-features">
+                                <li>Provides historical context from founding to present</li>
+                                <li>Gameifies learning about the Institute's history</li>
+                                <li>Students have access to engage with Institute's resources</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Design Process Overview -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">03 — Design Process</div>
+                <h2 class="section-title">From Research to Reality</h2>
+                <p class="section-description">
+                    A human-centered approach grounded in cultural research, user journey mapping, and iterative refinement informed by feedback and historical context.
+                </p>
+            </div>
+
+            <div class="process-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Phase 1</div>
+                        <h3 class="timeline-title">Research & Discovery</h3>
+                        <p class="timeline-description">
+                            Deep dive into the Institute's history. Explored student needs through informal interviews and observation, identifying the gap between available resources and student awareness.
+                        </p>
+                        <p class="timeline-description">
+                            Key insight: Students don't seek what they don't know exists.
+                        </p>
+                    </div>
+                    <div class="timeline-visual">
+                         <div class="solution-image">
+                            <img src="images/JohnWithKids2.jpg" alt="John D. O'Bryant With Students" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Phase 2</div>
+                        <h3 class="timeline-title">User Journey Mapping</h3>
+                        <p class="timeline-description">
+                            Mapped the student experience from initial interaction through engagement. Identified three main moments: initial discovery, first visit, and sustained engagement.
+                        </p>
+                        <p class="timeline-description">
+                            This journey map revealed the need for multiple touchpoints addressing different user needs at different stages.
+                        </p>
+                    </div>
+                    <div class="timeline-visual">
+                     <div class="solution-image">
+                            <img src="images/Tute-ExperienceMap.png" alt="User Journey Map" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Phase 3</div>
+                        <h3 class="timeline-title">Concept Development & Sketching</h3>
+                        <p class="timeline-description">
+                            Explored multiple concepts through rapid sketching. 
+                        </p>
+                    </div>
+                    <div class="timeline-visual">
+                        <div class="solution-image-gallery" style="background: #f5f5f5;">
+                            <img src="images/IMG_5938.JPG" alt="Brochure Layout Sketches" />
+                            <img src="images/IMG_5939.JPG" alt="Brochure Layout Sketches" />
+                            <img src="images/IMG_5940.JPG" alt="Brochure Layout Sketches" />
+                            <img src="images/IMG_5898.JPG" alt="Stamp Book Sketches" />
+                            <img src="images/IMG_5897 2.JPG" alt="Merchandise Concept Sketches" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Insights -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">04 — Research Insights</div>
+                <h2 class="section-title">What I Learned</h2>
+            </div>
+
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <h3 class="insight-title">Discovery Gap</h3>
+                    <p class="insight-description">
+                        Students cannot seek support from resources they don't know exist. The Institute's location right below West Village F masks its unique identity and purpose, reducing it to just another campus building in students' mental maps.
+                    </p>
+                </div>
+
+                <div class="insight-card">
+                    <h3 class="insight-title">Word of Mouth Limitations</h3>
+                    <p class="insight-description">
+                        Organic marketing fails when there's no initial awareness to spread. The students most isolated from social networks,often those who would benefit most from the Institute, are precisely those missed by word-of-mouth strategies.
+                    </p>
+                </div>
+
+                <div class="insight-card">
+                    <h3 class="insight-title">Physical Presence Matters</h3>
+                    <p class="insight-description">
+                        Tangible, branded materials provide visual reinforcement and added cognitive weight to students' minds.
+                    </p>
+                </div>
+
+                <div class="insight-card">
+                    <h3 class="insight-title">Third Space Necessity</h3>
+                    <p class="insight-description">
+                        Students need spaces beyond academic and residential environments for celebration, cultural gathering, and informal community building. The Institute can serve this function but only if students know it exists and feel welcomed.
+                    </p>
+                </div>
+            </div>
+
+            <div class="quote-box">
+                <p class="quote-text">Students transitioning to predominantly white institutions carry the weight of migration—seeking community spaces where they can celebrate culture, find support, and build belonging.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cultural Context Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">06 — Cultural Foundation</div>
+                <h2 class="section-title">Drawing from Jacob Lawrence's Legacy</h2>
+                <p class="section-description">
+                    A lot of visual inspiration was drawn from Jacob Lawrence's artistic exploration of migration, community, and cultural spaces. 
+                </p>
+            </div>
+
+            <div class="cultural-grid">
+                <div class="cultural-item">
+                    <h3 class="cultural-title">The Migration Series</h3>
+                    <p class="cultural-description">
+                        Lawrence's 60-panel series documenting the Great Migration of African Americans from the rural South to urban North parallels contemporary student migration to predominantly white institutions. Both involve leaving familiar communities, seeking opportunity, and navigating new cultural landscapes while maintaining identity and connection to heritage.
+                    </p>
+                    <p class="cultural-description">
+                        The geometric compositions and flattened forms in Lawrence's panels informed the visual language of this project.
+                    </p>
+
+                <div class="cultural-item">
+                    <h3 class="cultural-title">Pool Parlor (1942)</h3>
+                    <p class="cultural-description">
+                        This specific work captures a community gathering space. The pool hall serves as a "third space" beyond home and work, a place for leisure, conversation, and cultural exchange.
+                    </p>
+                    <p class="cultural-description">
+                        The Institute can function similarly: not just an academic support center, but a place where students gather, celebrate, and build community.
+                    </p>
+                    <div class="solution-image">
+                            <img src="images/Pool-Parlor.jpeg" alt="Pool-Parlor" />
+                    </div>
+                </div>
+            </div>
+
+    <!-- Brand Identity Showcase -->
+    <div class="brand-showcase">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number" style="color: #D4AF37;">Brand System</div>
+                <h2 class="section-title" style="color: #ffffff;">Visual Identity Guidelines</h2>
+            </div>
+
+            <div class="brand-grid">
+                <div class="brand-element">
+                    <div class="brand-sample color-black">Aa</div>
+                    <div class="brand-label">Primary Black</div>
+                    <div class="brand-value">#000000</div>
+                </div>
+                <div class="brand-element">
+                    <div class="brand-sample color-gold">Aa</div>
+                    <div class="brand-label">Gold</div>
+                    <div class="brand-value">#D4AF37</div>
+                </div>
+                <div class="brand-element">
+                    <div class="brand-sample color-red">Aa</div>
+                    <div class="brand-label">Red</div>
+                    <div class="brand-value">#C1272D</div>
+                </div>
+                <div class="brand-element">
+                    <div class="brand-sample color-green">Aa</div>
+                    <div class="brand-label">Green</div>
+                    <div class="brand-value">#009639</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 60px; text-align: center;">
+                <h3 style="color: #D4AF37; margin-bottom: 20px; font-size: 1.2rem;">Typography</h3>
+                <div style="color: #ffffff;">
+                    <p style="font-family: 'Freight Big Pro', Georgia, serif; font-size: 2rem; margin-bottom: 15px;">Freight BigPro — Headers & Titles</p>
+                    <p style="font-size: 1.2rem; opacity: 0.8;">Freight Book Sans — Body Text & Descriptions</p>
+                </div>
+            </div>
+        </div>
+    </div>
